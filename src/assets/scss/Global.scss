@@ -10,6 +10,10 @@ a {
   color:#333;
 }
 // 标题部分
+.service-title {
+  background-color: #fff;
+  padding: 0 20px 0 20px;
+}
 .title {
   span{
     display: block;
@@ -35,9 +39,39 @@ a {
     border-radius: 50%;
   }
 }
+// 细胞图片+右边文字样式
+.service-cell {
+  height: 250px;
+  background-color: #fff;
+
+  .index-list-card {
+    width: 67%;
+    background-color: #fff;
+
+    .index-list-text {
+      margin: 20px 0 20px 0;
+      color: #a1a1a1;
+
+      .price {
+        margin-top: 30px;
+        font-size: 30px;
+        color: #F05246;
+      }
+    }
+
+    .van-card__title {
+      font-size: 16px;
+      margin-top: 15px;
+    }
+  }
+
+}
 // tab栏颜色
 .van-tab.van-tab--active {
   color: #4DABF0 !important;
+}
+.van-button--info{
+  width: 100%;
 }
 
 .van-tabs__line {
@@ -74,6 +108,30 @@ a {
     background-color: #1989FA;
     text-align: center;
   }
+}
+//支付密码样式
+
+.mint-popup-bottom {
+  width: 100%;
+}
+.van-number-keyboard{
+  position: absolute;
+}
+.mint-popup {
+  display: block!important;
+  z-index: 10000000;
+  width: 100%;
+}
+.van-popup {
+  width: 100%;
+  height: 320px;
+}
+.paymentamount{
+  text-align: center;
+  display: block;
+  // font-size: 1.2rem;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 .fr {
   float: right;

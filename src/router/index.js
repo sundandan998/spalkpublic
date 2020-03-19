@@ -47,36 +47,23 @@ export default new Router({
       name: 'SelectService',
       component: () => import('@/pages/index/SelectService')
     },
-    // 非代理商页
+    //确认预约
     {
-      path: '/nonagent',
-      name: 'NonAgent',
-      component: () => import('@/pages/index/NonAgent')
+      path: '/confirmreservation',
+      name: 'ConfirmReservation',
+      component: () => import('@/pages/index/ConfirmReservation')
     },
-    // 购买结果
+    // 预约结果
     {
-      path: '/buyresult',
-      name: 'BuyResult',
-      component: () => import('@/pages/index/BuyResult')
+      path: '/payresult',
+      name: 'PayResult',
+      component: () => import('@/pages/index/PayResult')
     },
-    // 商品详情
+    //选择订单
     {
-      path: '/product/:id',
-      name: 'Product',
-      component: () => import('@/pages/index/ProductDetails')
-    },
-    // 填写订单
-    {
-      path: '/order/:id',
-      name: 'Order',
-      component: () => import('@/pages/index/FillOrder')
-    },
-
-    // 去支付
-    {
-      path: '/pay/:id',
-      name: 'ToPay',
-      component: () => import('@/pages/index/ToPay')
+      path: '/selectorder',
+      name: 'SelectOrder',
+      component: () => import('@/pages/index/SelectOrder')
     },
 
     // 我的
@@ -235,12 +222,6 @@ export default new Router({
       path: '/forget',
       name: 'Forget',
       component: () => import('@/pages/mine/safety-center/forgetPwd')
-    },
-    // 预约信息
-    {
-      path: '/reservation',
-      name: 'Reservation',
-      component: () => import('@/pages/index/Reservation')
     },
   ]
 })

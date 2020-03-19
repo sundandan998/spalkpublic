@@ -35,9 +35,11 @@
           <van-button plain type="primary">返回</van-button>
         </div>
       </router-link>
-      <div class="right-btn fr">
-        <van-button type="info">预约</van-button>
-      </div>
+      <router-link :to="{name:'SelectService'}">
+        <div class="right-btn fr">
+          <van-button type="info">预约</van-button>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -57,38 +59,6 @@
     .service-title {
       background-color: #fff;
     }
-
-    .service-cell {
-      height: 250px;
-      background-color: #fff;
-
-      /* .cell-img {
-        width: 30%;
-        margin: 20px 0 20px 20px;
-        border: 1px solid #ccc;
-        img {
-          height: 200px;
-          width: 200px;
-          border-radius: 50%;
-        }
-      } */
-      .index-list-card {
-        width: 67%;
-        background-color: #fff;
-
-        .index-list-text {
-          margin: 20px 0 20px 0;
-          color: #a1a1a1;
-        }
-
-        .van-card__title {
-          font-size: 16px;
-          margin-top: 15px;
-        }
-      }
-
-    }
-
     .service-tab {
       background-color: #fff;
 
