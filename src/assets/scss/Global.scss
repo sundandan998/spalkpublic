@@ -1,0 +1,118 @@
+body {
+  background-color: #f2f2f2;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color:#333;
+}
+// 标题部分
+.title {
+  span{
+    display: block;
+    height: 80px;
+    margin:0px 0 1px 0;
+    line-height: 80px;
+    font-size:28px;
+  }
+  img{
+    position: relative;
+    top:10px;
+    height: 35px;
+  }
+}
+// 细胞列表
+.cell-img {
+  width: 30%;
+  margin: 20px 0 20px 20px;
+  border: 1px solid #ccc;
+  img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+  }
+}
+// tab栏颜色
+.van-tab.van-tab--active {
+  color: #4DABF0 !important;
+}
+
+.van-tabs__line {
+  background-color: #4DABF0 !important;
+}
+.van-tab {
+  color: #4DABF0;
+}
+// 底部按钮
+.bottom-btn{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  .left-btn{
+    width: 29% !important;
+    height: 80px;
+    background-color: #fff;
+    border-top:1px solid #1989FA;
+    border-left:1px solid #1989FA;
+    border-bottom:1px solid #1989FA;
+    /* boder-right:none; */
+    text-align: center;
+    .van-button--primary{
+      border:none;
+      color:#1989FA;
+    }
+    .van-button--primary{
+      display: contents;
+    }
+  }
+  .right-btn{
+    width: 70.5% !important;
+    height: 80px;
+    background-color: #1989FA;
+    text-align: center;
+  }
+}
+.fr {
+  float: right;
+}
+.fl {
+  float: left;
+}
+.mint-field {
+  margin-bottom: 8px;
+}
+
+input{
+  border:none;
+  width: 50%;
+}
+.mint-cell-wrapper {
+  background-image: none !important;
+}
+#disbtn {
+  background-color: #ccc;
+}
+
+.mint-cell-value span{
+  color: #333;
+}
+// 修改手机号页面的toast显示在遮罩层上方
+.zZindex{
+  z-index: 3000 !important;
+}
+
+// 按钮部分
+
+
+// 遮罩层
+.mint-popup {
+  width: 80%;
+  border-radius: 5px;
+  height: 410px;
+  .mint-cell-wrapper {
+    border-bottom: 1px solid #f6f6f6;
+  }
+}
