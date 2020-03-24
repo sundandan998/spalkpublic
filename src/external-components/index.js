@@ -1,8 +1,8 @@
 // vant框架
 import {PasswordInput, NumberKeyboard, Popup, List, PullRefresh, Dialog, 
   GoodsAction, Tab, Tabs, AddressList,Button,Card,Stepper,RadioGroup, 
-  Radio,AddressEdit,NoticeBar,Swipe, SwipeItem, Row, Col} from 'vant'
-import { Slider} from 'element-ui'
+  Radio,AddressEdit,NoticeBar,Swipe, SwipeItem, Row, Col,Area, Uploader} from 'vant'
+import { Slider,Steps,Step} from 'element-ui'
 const external = {
   install: function (Vue) {
     Vue.use(PasswordInput).use(NumberKeyboard)
@@ -23,6 +23,11 @@ const external = {
     Vue.use(NoticeBar)
     Vue.use(Swipe).use(SwipeItem)
     Vue.use(Row).use(Col)
+    Vue.use(Area)
+    Vue.use(Uploader)
+    Vue.use(Steps)
+    Vue.use(Step)
+
   }
 }
 export default external

@@ -1,41 +1,45 @@
 <template>
   <div class="home">
-    <!-- 中间部分 -->
-    <div class="home-body">
-      <div class="health-information">
-        <div class="home-body-list">
-          <mt-cell title="邀请新人" to="invite" is-link v-if="shops.is_agent==true">
-            <img slot="icon" src="../../assets/images/invite.svg">
-          </mt-cell>
+    <!-- 头像部分 -->
+    <div class="home-title">
+      <div class="home-title-icon fl"><img src="../../assets/images/avatar.svg" alt=""
+          class="fl"><span>1589895658</span></div>
+      <img src="../../assets/images/r.svg" alt="" class="fr arrow">
+    </div>
+    <!-- 我的账户 -->
+    <div class="home-account">
+      <p><img src="../../assets/images/account.svg" alt=""> <span>我的账户</span></p>
+      <div class="home-account-balance">
+        <div class="home-integral fl">
+          <p><img src="../../assets/images/integral.svg" alt="">我的积分</p>
+          <p>20000</p>
         </div>
-        <div class="home-body-list center">
-          <mt-cell title="供货商中心" to="merchant" is-link v-if="shops.is_shops==true">
-            <img slot="icon" src="../../assets/images/merchant.svg">
-          </mt-cell>
-        </div>
-        <div class="home-body-list center">
-            <mt-cell title="代理商中心" to="agent" is-link v-if="shops.is_agent==true">
-              <img slot="icon" src="../../assets/images/agent.svg">
-            </mt-cell>
-          </div>
-        <div class="home-body-list order">
-          <mt-cell title="资产中心" to="assets" is-link>
-            <img slot="icon" src="../../assets/images/access.svg">
-          </mt-cell>
-          <mt-cell title="我的订单" to="myorder" is-link>
-            <img slot="icon" src="../../assets/images/reservation.svg">
-          </mt-cell>
-          <mt-cell title="收货地址" to="address" is-link>
-            <img slot="icon" src="../../assets/images/address.svg">
-          </mt-cell>
-        </div>
-        <!-- to="safety" -->
-        <div class="home-body-list">
-          <mt-cell title="安全中心" is-link @click.native="setpwd">
-            <img slot="icon" src="../../assets/images/safety.svg">
-          </mt-cell>
+        <div class="home-fd fr">
+          <p><img src="../../assets/images/fd.svg" alt=""> 我的福豆</p>
+          <p>20000</p>
         </div>
       </div>
+    </div>
+    <!-- 中间部分 -->
+    <div class="home-body">
+      <mt-cell title="我的订单" to="myorder" is-link>
+        <img slot="icon" src="../../assets/images/order.svg">
+      </mt-cell>
+      <mt-cell title="用户订单" to="myorder" is-link>
+        <img slot="icon" src="../../assets/images/order.svg">
+      </mt-cell>
+      <mt-cell title="代理商管理" to="assets" is-link>
+        <img slot="icon" src="../../assets/images/agent.svg">
+      </mt-cell>
+      <mt-cell title="我的证书" to="certificate" is-link>
+        <img slot="icon" src="../../assets/images/access.svg">
+      </mt-cell>
+      <mt-cell title="邀请管理" to="address" is-link>
+        <img slot="icon" src="../../assets/images/address.svg">
+      </mt-cell>
+      <mt-cell title="专属管家" is-link @click.native="setpwd">
+        <img slot="icon" src="../../assets/images/safety.svg">
+      </mt-cell>
     </div>
     <!-- 底部tabber -->
     <div>
@@ -45,90 +49,108 @@
 </template>
 <script>
   import Tabber from '../../assets/tabber/Tabber.vue'
-  // 接口请求
-  import api from '@/api/user/User.js'
-  import { Dialog } from 'vant'
   export default {
     data() {
       return {
         selected: 'mine',
         message: 'mine',
-        show: true,
-        info: {},
-        // 商家中心
-        shops: {},
-        integral: {
-          'available': '--'
-        }
       }
     },
     components: {
       'app-tabber': Tabber
     },
     created() {
-      document.title = '我的'
-      this.userInfo()
+      document.title = '斯帕尔克'
     },
     methods: {
-      setpwd() {
-        if (this.shops.pay_pwd_active == true) {
-          this.$router.push({
-            name: 'SafetyCenter'
-          })
-        } else {
-          Dialog.confirm({
-            title: '提示',
-            message: '请先设置支付密码再进行操作',
-            cancelButtonText: '再想想',
-            confirmButtonText: '去设置'
-          }).then(() => {
-            this.$router.push({
-              name: 'SafetyVerification',
-              params: { id: 'mine' }
-            })
-          }).catch(() => {
-          })
-        }
-      },
-      // 个人信息
-      userInfo() {
-        api.information().then(res => {
-          this.shops = res.data
-        }).catch(err => {
-        })
-      }
+
     }
   }
 </script>
 <style lang="scss">
   @import '../../assets/scss/Global.scss';
+
   .home {
-    .home-body {
-      margin-top: 10px;
+    .home-title {
+      height: 150px;
+      background-color: #fff;
+      margin: 0 0 20px 0;
+
+      .home-title-icon {
+        margin: 40px 0px 0 20px;
+
+        img {
+          height: 80px;
+        }
+
+        span {
+          margin-left: 20px;
+          position: relative;
+          top: 20px;
+          font-size: 30px;
+        }
+      }
+
+      .arrow {
+        position: relative;
+        top: 70px;
+        right: 20px;
+      }
     }
 
-    .mint-cell {
-      margin: 0px 12px;
-      border-radius: 10px;
-    }
-
-    .home-body-list {
+    /* 账户 */
+    .home-account {
+      background-color: #fff;
       margin-bottom: 10px;
+
+      p {
+        padding: 20px 0 10px 25px;
+
+        span {
+          position: relative;
+          top: -10px;
+          left: 10px;
+          font-size: 28px;
+        }
+
+        img {
+          width: 40px;
+        }
+      }
+
+      .home-account-balance {
+        margin: 0 20px;
+        height: 160px;
+
+        img {
+          position: relative;
+          top: 10px;
+          right: 5px;
+        }
+
+        p {
+          text-align: center;
+          font-size: 26px;
+        }
+
+        .home-integral {
+          background-color: #F2F2F2;
+          width: 45%;
+          border-radius: 10px;
+        }
+
+        .home-fd {
+          background-color: #F2F2F2;
+          width: 45%;
+          border-radius: 10px;
+        }
+      }
     }
 
-  }
-
-  .order .mint-cell:first-child {
-    border-bottom-right-radius: unset;
-    border-bottom-left-radius: unset;
-  }
-
-  .order .mint-cell:nth-child(2) {
-    border-radius: unset;
-  }
-
-  .order .mint-cell:last-child {
-    border-top-right-radius: unset;
-    border-top-left-radius: unset;
+    .home-body {
+      .mint-cell {
+        margin-bottom: 5px;
+      }
+    }
   }
 </style>

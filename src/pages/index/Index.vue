@@ -5,7 +5,7 @@
       <span><img src="../../assets/images/service.svg" alt="">请选择服务</span>
     </div>
     <!-- 服务列表 -->
-    <div class="index-list">
+    <div class="index-list service-cell">
       <div class="cell-img fl">
         <img src="../../assets/images/cell.jpg" alt="">
       </div>
@@ -56,7 +56,6 @@
 </script>
 <style lang="scss">
   @import "../../assets/scss/Global.scss";
-
   .index {
     .index-title {
       background-color: #fff;
@@ -68,7 +67,6 @@
         height: 80px;
         line-height: 80px;
       }
-
       img {
         position: relative;
         top: 12px;
@@ -80,8 +78,6 @@
       background-color: #fff;
       height: 250px;
       .index-list-card {
-        background-color: #fff;
-        width: 67%;
         .van-card__title {
           font-size: 16px;
           margin: 5px 5px;

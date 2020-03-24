@@ -1,179 +1,106 @@
 <template>
-  <div class="detail">
-    <div class="detail-address">
-      <img src="../../../assets/images/mechant-address.png" alt="">
-      <span>
-        <p>{{detailAddress.name}} {{detailAddress.tel}}</p>
-        <p class="detail-province">
-          {{detailAddress.province}}{{detailAddress.city}}{{detailAddress.county}}{{detailAddress.addressDetail}}
-        </p>
-      </span>
+  <div class="order-detail">
+    <!-- 标题 -->
+    <div class="service-title title">
+      <span class="fl" v-on:click="$router.go(-1)"> <img src="../../../assets/images/l.svg" alt=""> 订单详情</span>
+      <router-link :to="{name:'ReservationInformation'}">
+        <span class="fr"> <img src="../../../assets/images/chain.svg" alt="" class="right-icon">预约信息</span>
+      </router-link>
     </div>
-    <div class="detail-product">
-      <van-card :num="detailData.count" :desc="'￥'+detailData.currency" :title="detailData.sku_name"
-        :thumb="detailData.sku_image" />
-        <p><span class="detail-num">积分总额:</span><span class="fr">{{detailData.total_integral}}(超级积分)</span></p>
-        <p><span class="detail-num">实付通证数量:</span><span class="fr">{{detailData.total_amount}}({{detailData.token}})</span>
-        </p>
-        <p  v-if="detailData.status!=1"><span class="detail-num">物流单号:</span><span class="fr">{{detailData.wl_number}}</span>
-        </p>
-        <div class="detail-status">
-          <p><span class="detail-num">订单状态:</span><span class="fr">{{detailData.status|orderStatus}}</span></p>
-          <p><span class="detail-num">订单编号:</span><span class="fr">{{detailData.order_id}}</span></p>
-          <p><span class="detail-num">交易时间:</span><span class="fr">{{detailData.transaction_time}}</span></p>
-        </div>
+    <!-- 名称及订单号 -->
+    <div class="order-detail-cellname">
+      <span>免疫细胞 - 存储10年</span>
+      <p><span>订单号</span> <span @click="copyText" class="fr copy overflow-text tag-read"
+          :data-clipboard-text="2564963">2564963
+          <img src="../../../assets/images/copy.svg" alt=""></span></p>
     </div>
-  
-    <router-link to="/myorder">
-      <div class="order-button">
-        <mt-button size="large">返回</mt-button>
+    <!-- 服务人信息 -->
+    <div class="information">
+      <p>完善受服务人信息</p>
+      <div class="select-tab">
+        <van-tabs v-model="active">
+          <van-tab title="本人">
+            <mt-field label="姓名"></mt-field>
+            <mt-field label="电话" readonly></mt-field>
+            <mt-field label="身份证号"></mt-field>
+            <mt-cell title="常住地址" is-link @click.native="showPopup">
+              <van-popup position="bottom" v-model="show">
+                <van-area :area-list="areaList" :columns-num="3" ref="myArea" />
+              </van-popup>
+            </mt-cell>
+          </van-tab>
+          <van-tab title="他人">
+            <mt-field label="姓名" placeholder="请输入身份证上姓名"></mt-field>
+            <mt-field label="电话" placeholder="请输入11位手机号码"></mt-field>
+            <mt-field label="身份证号" placeholder="请输入身份证号码"></mt-field>
+            <mt-cell title="常住地址" is-link>
+            </mt-cell>
+          </van-tab>
+        </van-tabs>
+
       </div>
-    </router-link>
-    <div class="bottom-button" v-if="detailData.status==2" v-show="showBtn">
-      <van-button square size="large" type="primary" @click="cancel"> 返回</van-button>
-      <van-button square size="large" type="danger" @click=receipt>确认收货</van-button>
+      <!-- </mt-cell> -->
+    </div>
+    <!-- 底部按钮 -->
+    <div class="bottom-btn">
+      <!-- <router-link :to="{name:'MyOrder'}"> -->
+      <div class="left-btn fl" v-on:click="$router.go(-1)">
+        <van-button plain type="primary">返回</van-button>
+      </div>
+      <!-- </router-link> -->
+      <router-link :to="{name:'UploadReport'}">
+        <div class="right-btn fr">
+          <van-button type="info">下一步</van-button>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
 <script>
-  import api from '@/api/order/order.js'
-  import { Toast } from 'mint-ui'
+  // 复制方法
+  import { copy } from '@/assets/js/common.js'
+  import areaList from '@/assets/js/area'
   export default {
     data() {
       return {
-        status: '',
-        detailData: {},
-        detailAddress: {},
-        // 解决底部按钮被弹起问题
-        clientHeight: document.documentElement.clientHeight,
-        showBtn: true,  // 控制按钮盒子显示隐藏
+        active: 0,
+        areaList,
+        val: '',
+        show:false,
       }
     },
     created() {
-      document.title = '订单详情'
-      this.detailId = this.$route.params
-      this.detail()
-    },
-    // 解决底部按钮被弹起问题
-    mounted() {
-      window.onresize = () => {
-        if (this.clientHeight > document.documentElement.clientHeight) {
-          this.showBtn = false
-        } else {
-          this.showBtn = true
-        }
-      }
     },
     methods: {
-      // 订单详情
-      detail() {
-        api.merchantDetail(this.$route.params).then(res => {
-          this.detailData = res.data
-          this.detailAddress = res.data.address
-        }).catch(err => {
-
-        })
+      // 复制功能
+      copyText() {
+        copy()
       },
-      // 取消
-      cancel() {
-        this.$router.push({
-          name: 'MyOrder'
-        })
-      },
-      //  确认收货
-      receipt() {
-        api.receipt(this.$route.params).then(res => {
-          if (res.code == 0) {
-            this.detailData.status = 3
-            Toast({
-              message: res.msg,
-              className: 'zZindex'
-            })
-          }
-        }).catch(err => {
-          if (err.code != 0) {
-            Toast({
-              message: err.msg,
-              position: 'top',
-              className: 'zZindex'
-            })
-          }
-        })
+      showPopup(){
+        this.show=!this.show
       }
-    },
+    }
   }
 </script>
 <style lang="scss">
   @import "../../../assets/scss/Global.scss";
 
-  .detail {
-
-    /* 地址 */
-    .detail-address {
-      height: 190px;
+  .order-detail {
+    .information {
+      margin-top: 20px;
       background-color: #fff;
-      margin: 10px 24px;
-      border-radius: 20px;
-      overflow: hidden;
 
-      img {
-        display: inline-block;
-        float: left;
-        margin: 60px 20px 0 30px;
-        height: 45px;
+      p {
+        margin: 10px 0 10px 20px;
+        padding-top: 30px;
+        font-size: 28px;
+        color: #036EB8;
+        font-weight: 700;
       }
 
-      span {
-        display: block;
-        margin-top: 50px;
-        font-size: 32px;
-
-        .detail-province {
-          font-size: 26px;
-          color: #999;
-        }
-      }
-    }
-
-    /* 商品 */
-    .detail-product {
-      height: auto;
-      background-color: #fff;
-      margin: 10px 24px;
-      border-radius: 20px;
-
-      .van-card__thumb {
-        img {
-          border-radius: 20px;
-        }
-      }
-
-      .van-card {
+      .select-tab {
         background-color: #fff;
-        border-radius: 20px;
-      }
-
-      .van-card__content {
-        font-size: 14px;
-        margin-top: 20px;
-      }
-      .van-card__title{
-        margin-bottom: 20px;
-      }
-      .van-card__desc.van-ellipsis {
-        font-size: 15px;
-        color: #c9191d;
-      }
-      p{
-        height: 100px;
-        line-height: 100px;
-        margin: 0 30px 0 40px;
-        font-size: 26px;
-        color:#333;
-        border-bottom: 1px solid #f2f2f2;
-        .detail-num{
-          color:#999;
-        }
+        height: 150px;
       }
     }
   }

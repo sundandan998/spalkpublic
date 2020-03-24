@@ -2,9 +2,8 @@
   <div class="select-service">
     <!-- 标题 -->
     <div class="service-title title">
-      <!-- <img src="../../assets/images/health.svg" alt="" class="fr health"> -->
-      <span> <img src="../../assets/images/l.svg" alt=""> 预约服务
-      </span>
+      <span class="fl"> <img src="../../assets/images/l.svg" alt=""> 预约服务</span>
+      <span class="fr" @click="service"> <img src="../../assets/images/ministry.svg" alt="" class="right-icon"></span>
     </div>
     <!-- 细胞名称 -->
     <div class="service-cell">
@@ -32,9 +31,9 @@
     <!-- 底部按钮 -->
     <div class="bottom-btn">
       <!-- <router-link :to="{name:'Index'}"> -->
-        <div class="left-btn fl" v-on:click="$router.go(-1)">
-          <van-button plain type="primary">返回</van-button>
-        </div>
+      <div class="left-btn fl" v-on:click="$router.go(-1)">
+        <van-button plain type="primary">返回</van-button>
+      </div>
       <!-- </router-link> -->
       <router-link :to="{name:'ConfirmReservation'}">
         <div class="right-btn fr">
@@ -45,9 +44,34 @@
   </div>
 </template>
 <script>
+  import { copy } from '@/assets/js/common.js'
   export default {
     data() {
       return {
+      }
+    },
+    methods: {
+      service() {
+        // 删除地址弹框
+        this.$messagebox({
+          title: '专属管家',
+          message: '管家-奇奇 15898956235',
+          cancelButtonText: '我知道了',
+          confirmButtonText: '复制号码',
+          showCancelButton: true
+        }).then(action => {
+          if (action === 'confirm') {
+            // copyTel()
+            // api.delAdress(this.$route.params).then(res => {
+            // 	toast(res)
+            // 	this.$router.push({
+            // 		name: 'Book'
+            // 	})
+            // }).catch(err => {
+            // 	toast(err)
+            // })
+          }
+        })
       }
     }
   }
@@ -56,7 +80,7 @@
   @import "../../assets/scss/Global.scss";
 
   .select-service {
-  
+
     .service-specification {
       background-color: #fff;
 

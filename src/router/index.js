@@ -120,17 +120,11 @@ export default new Router({
       name: 'TransferDetail',
       component: () => import('@/pages/mine/assets-center/TransferDetail')
     },
-    // 明细
+    //订单详情-待受理
     {
-      path: '/assetsdetail',
-      name: 'AssetsDetail',
-      component: () => import('@/pages/mine/order/AssetsDetail')
-    },
-    // 明细详情
-    {
-      path: '/assetsdetails/:id',
-      name: 'AssetsDetails',
-      component: () => import('@/pages/mine/order/AssetsDetails')
+      path: '/orderpending',
+      name: 'OrderPending',
+      component: () => import('@/pages/mine/order/OrderPending')
     },
     // 我的订单
     {
@@ -141,9 +135,34 @@ export default new Router({
 
     // 订单详情
     {
-      path: '/orderdetail/:id',
+      // path: '/orderdetail/:id',
+      path: '/orderdetail',
       name: 'OrderDetail',
       component: () => import('@/pages/mine/order/OrderDetail')
+    },
+    // 上传体检报告
+    {
+      path: '/uploadreport',
+      name: 'UploadReport',
+      component: () => import('@/pages/mine/order/UploadReport')
+    },
+     //受服务人信息
+     {
+      path: '/serviced',
+      name: 'ServicedInformation',
+      component: () => import('@/pages/mine/order/ServicedInformation')
+    },
+    // 体检报告
+    {
+      path: '/report',
+      name: 'MedicalReport',
+      component: () => import('@/pages/mine/order/MedicalReport')
+    },
+    // 预约信息
+    {
+      path: '/reservation',
+      name: 'ReservationInformation',
+      component: () => import('@/pages/mine/order/ReservationInformation')
     },
     // 收货地址
     {
@@ -169,17 +188,11 @@ export default new Router({
       name: 'SafetyCenter',
       component: () => import('@/pages/mine/safety-center/SafetyCenter')
     },
-    // 商家中心
+    // 证书详情
     {
-      path: '/merchant',
-      name: 'MerchantCenter',
-      component: () => import('@/pages/mine/merchant-center/MerchantCenter')
-    },
-    // 商家中心详情
-    {
-      path: '/merchantdetail/:id',
-      name: 'MerchantCenterDetail',
-      component: () => import('@/pages/mine/merchant-center/MerchantCenterDetail')
+      path: '/certificate',
+      name: 'CertificateDetail',
+      component: () => import('@/pages/mine/certificate/CertificateDetail')
     },
     // 代理商列表
     {

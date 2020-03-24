@@ -15,6 +15,13 @@ a {
 .service-title {
   background-color: #fff;
   padding: 0 20px 0 20px;
+  height: 90px;
+}
+
+.service-title .right-icon {
+  margin-top: 10px;
+  margin-right: 10px;
+  height: 45px;
 }
 
 .title span {
@@ -29,6 +36,11 @@ a {
   position: relative;
   top: 10px;
   height: 35px;
+}
+
+.no-data {
+  margin: 50px auto;
+  text-align: center;
 }
 
 .cell-img {
@@ -70,7 +82,7 @@ a {
 }
 
 .van-tab.van-tab--active {
-  color: #4DABF0 !important;
+  color: #036EB8 !important;
 }
 
 .van-button--info {
@@ -78,11 +90,11 @@ a {
 }
 
 .van-tabs__line {
-  background-color: #4DABF0 !important;
+  background-color: #036EB8 !important;
 }
 
 .van-tab {
-  color: #4DABF0;
+  color: #333;
 }
 
 .bottom-btn {
@@ -95,16 +107,16 @@ a {
   width: 29% !important;
   height: 80px;
   background-color: #fff;
-  border-top: 1px solid #1989FA;
-  border-left: 1px solid #1989FA;
-  border-bottom: 1px solid #1989FA;
+  border-top: 1px solid #036EB8 !important;
+  border-left: 1px solid #036EB8 !important;
+  border-bottom: 1px solid #036EB8 !important;
   /* boder-right:none; */
   text-align: center;
 }
 
 .bottom-btn .left-btn .van-button--primary {
   border: none;
-  color: #1989FA;
+  color: #036EB8 !important;
 }
 
 .bottom-btn .left-btn .van-button--primary {
@@ -114,8 +126,42 @@ a {
 .bottom-btn .right-btn {
   width: 70.5% !important;
   height: 80px;
-  background-color: #1989FA;
+  background-color: #036EB8 !important;
   text-align: center;
+}
+
+.back-btn {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+
+.van-button--info {
+  background-color: #036EB8 !important;
+}
+
+.order-detail-cellname {
+  height: 150px;
+  background-color: #fff;
+  padding-top: 20px;
+}
+
+.order-detail-cellname span {
+  margin: 10px 25px;
+  display: inline-block;
+  font-size: 38px;
+}
+
+.order-detail-cellname p span {
+  font-size: 26px;
+  color: #a1a1a1;
+}
+
+.order-detail-cellname .copy img {
+  width: 30px;
+  position: relative;
+  top: 7px;
+  margin-left: 10px;
 }
 
 .mint-popup-bottom {
@@ -150,10 +196,6 @@ a {
 
 .fl {
   float: left;
-}
-
-.mint-field {
-  margin-bottom: 8px;
 }
 
 input {
