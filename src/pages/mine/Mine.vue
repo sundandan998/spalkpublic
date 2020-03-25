@@ -10,10 +10,12 @@
     <div class="home-account">
       <p><img src="../../assets/images/account.svg" alt=""> <span>我的账户</span></p>
       <div class="home-account-balance">
-        <div class="home-integral fl">
-          <p><img src="../../assets/images/integral.svg" alt="">我的积分</p>
-          <p>20000</p>
-        </div>
+        <router-link to="scores">
+          <div class="home-integral fl">
+            <p><img src="../../assets/images/integral.svg" alt="">我的积分</p>
+            <p>20000</p>
+          </div>
+        </router-link>
         <div class="home-fd fr">
           <p><img src="../../assets/images/fd.svg" alt=""> 我的福豆</p>
           <p>20000</p>

@@ -2,7 +2,7 @@
 import {PasswordInput, NumberKeyboard, Popup, List, PullRefresh, Dialog, 
   GoodsAction, Tab, Tabs, AddressList,Button,Card,Stepper,RadioGroup, 
   Radio,AddressEdit,NoticeBar,Swipe, SwipeItem, Row, Col,Area, Uploader} from 'vant'
-import { Slider,Steps,Step} from 'element-ui'
+import { Slider,Steps,Step,DropdownMenu, DropdownItem,Dropdown} from 'element-ui'
 const external = {
   install: function (Vue) {
     Vue.use(PasswordInput).use(NumberKeyboard)
@@ -27,7 +27,9 @@ const external = {
     Vue.use(Uploader)
     Vue.use(Steps)
     Vue.use(Step)
-
+    Vue.use(DropdownMenu)
+    Vue.use(DropdownItem)
+    Vue.use(Dropdown)
   }
 }
 export default external

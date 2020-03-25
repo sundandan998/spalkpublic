@@ -146,8 +146,8 @@ export default new Router({
       name: 'UploadReport',
       component: () => import('@/pages/mine/order/UploadReport')
     },
-     //受服务人信息
-     {
+    //受服务人信息
+    {
       path: '/serviced',
       name: 'ServicedInformation',
       component: () => import('@/pages/mine/order/ServicedInformation')
@@ -193,6 +193,48 @@ export default new Router({
       path: '/certificate',
       name: 'CertificateDetail',
       component: () => import('@/pages/mine/certificate/CertificateDetail')
+    },
+    // 我的积分
+    {
+      path: '/scores',
+      name: 'MyScores',
+      component: () => import('@/pages/mine/my-scores/MyScores')
+    },
+    // 转入
+    {
+      path: '/into',
+      name: 'TransferInto',
+      component: () => import('@/pages/mine/my-scores/TransferInto')
+    },
+    // 转出
+    {
+      path: '/out',
+      name: 'TransferOut',
+      component: () => import('@/pages/mine/my-scores/TransferOut')
+    },
+    // 转出确认
+    {
+      path: '/turnconfirm',
+      name: 'TurnConfirm',
+      component: () => import('@/pages/mine/my-scores/TurnConfirm')
+    },
+    // 转账结果
+    {
+      path: '/turnresult',
+      name: 'TurnResult',
+      component: () => import('@/pages/mine/my-scores/TurnResult')
+    },
+    // 明细
+    {
+      path: '/details',
+      name: 'PointsDetails',
+      component: () => import('@/pages/mine/my-scores/PointsDetails')
+    },
+    // 明细详情
+    {
+      path: '/creditdetails',
+      name: 'CreditDetails',
+      component: () => import('@/pages/mine/my-scores/CreditDetails')
     },
     // 代理商列表
     {
