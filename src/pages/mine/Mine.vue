@@ -1,11 +1,13 @@
 <template>
   <div class="home">
     <!-- 头像部分 -->
-    <div class="home-title">
-      <div class="home-title-icon fl"><img src="../../assets/images/avatar.svg" alt=""
-          class="fl"><span>1589895658</span></div>
-      <img src="../../assets/images/r.svg" alt="" class="fr arrow">
-    </div>
+    <router-link :to="{name:'PersonCenter'}">
+      <div class="home-title">
+        <div class="home-title-icon fl"><img src="../../assets/images/avatar.svg" alt=""
+            class="fl"><span>1589895658</span></div>
+        <img src="../../assets/images/r.svg" alt="" class="fr arrow">
+      </div>
+    </router-link>
     <!-- 我的账户 -->
     <div class="home-account">
       <p><img src="../../assets/images/account.svg" alt=""> <span>我的账户</span></p>
@@ -39,7 +41,10 @@
       <mt-cell title="邀请管理" to="address" is-link>
         <img slot="icon" src="../../assets/images/address.svg">
       </mt-cell>
-      <mt-cell title="专属管家" is-link @click.native="setpwd">
+      <mt-cell title="专属管家" to="housekeeper" is-link>
+        <img slot="icon" src="../../assets/images/ministry.svg">
+      </mt-cell>
+      <mt-cell title="安全中心" to="safety" is-link>
         <img slot="icon" src="../../assets/images/safety.svg">
       </mt-cell>
     </div>

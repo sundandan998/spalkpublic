@@ -1,19 +1,33 @@
 <template>
-  <div class="modify">
+  <div class="modify backcolor">
+    <!-- 标题 -->
+    <div class="service-title title">
+      <router-link :to="{name:'Mine'}">
+        <span> <img src="../../../assets/images/l.svg" alt=""> 修改手机号</span>
+      </router-link>
+    </div>
     <div class="modify-tel">
-      <mt-field label="+86" class="tel-input" @blur.native.capture="sendCode" :state="CodeStatus" placeholder="请输入手机号"
-        v-model="tel.mobile"></mt-field>
+      <mt-field label="+86" placeholder="请输入手机号" type="tel" @blur.native.capture="sendCode" :state="CodeStatus">
+      </mt-field>
+      <!-- <mt-field label="+86" class="tel-input" @blur.native.capture="sendCode" :state="CodeStatus" placeholder="请输入手机号"
+        v-model="tel.mobile"></mt-field> -->
     </div>
     <div class="modify-code">
-      <mt-field label="验证码" placeholder="请输入验证码" type="tel" v-model="tel.code">
-        <input class="send-input" v-on:click="sendSmsCode" readonly="readonly" v-model="btnCode.btnContent" />
+      <mt-field label="验证码" placeholder="请输入验证码" type="tel">
+        <span v-on:click="sendSmsCode" v-model="btnCode.btnContent" class="send-code">发送验证码</span>
       </mt-field>
     </div>
     <!-- 底部按钮 -->
-    <div class="bottom-button">
-      <van-button square size="large" type="danger" @click="submit" :disabled="disabled">提交</van-button>
-      <router-link to="safety">
-        <van-button square size="large" type="warning">取消</van-button>
+    <div class="bottom-btn">
+      <router-link :to="{name:'SafetyCenter'}">
+        <div class="left-btn fl">
+          <van-button plain type="primary">返回</van-button>
+        </div>
+      </router-link>
+      <router-link :to="{name:'PersonCenter'}">
+        <div class="right-btn fr">
+          <van-button type="info">提交</van-button>
+        </div>
       </router-link>
     </div>
   </div>
@@ -39,7 +53,7 @@
       }
     },
     created() {
-      document.title = 'HV'
+      document.title = '斯帕尔克'
 
     },
     methods: {
@@ -134,48 +148,18 @@
 
   .modify {
     .modify-tel {
-      margin: 10px 0;
+      margin: 50px 20px 10px 20px;
     }
 
-    .mint-field {
-      border-radius: 10px;
-    }
     .modify-code {
-      .send-input {
-        border: 0.01333rem solid #a9a9a9;
-        float: right;
-        color: #a9a9a9;
-        padding: 2px 0;
-        text-align: center;
-        border-radius: 7px;
-        font-size: 28px;
+      margin: 10px 20px 10px 20px;
+      .send-code{
+        border: 1px solid #4DABF0;
+        font-size:24px;
+        padding:10px;
+        border-radius:10px;
+        color:#4DABF0;
       }
     }
-  }
-
-  .tel-input {
-    input.mint-field-core {
-      width: 180px !important;
-    }
-  }
-
-  .mint-field-other {
-    top: 0;
-    right: 0;
-    position: relative;
-    width: 130px;
-  }
-
-  .mint-field-core input {
-    width: 0 !important;
-  }
-
-
-
-  .mint-field-other {
-    top: 0;
-    right: 25px;
-    position: relative;
-    width: 100px;
   }
 </style>

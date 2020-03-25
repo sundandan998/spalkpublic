@@ -85,7 +85,6 @@
   .confirm-reservation {
     .confirm-step {
       background-color: #fff;
-
       p {
         padding-top: 40px;
         overflow: hidden;

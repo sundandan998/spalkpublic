@@ -1,5 +1,5 @@
 <template>
-  <div class="transfer-into">
+  <div class="transfer-into backcolor">
     <!-- 标题 -->
     <div class="service-title title">
       <router-link :to="{name:'MyScores'}">
@@ -63,10 +63,6 @@
     margin: 0 auto;
   }
   .transfer-into {
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    position: fixed;
     .transfer-into-title {
       margin: 50px auto 0px auto;
       text-align: center;

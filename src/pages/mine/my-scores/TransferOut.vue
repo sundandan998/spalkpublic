@@ -1,5 +1,5 @@
 <template>
-  <div class="transfer-out">
+  <div class="transfer-out backcolor">
     <!-- 标题 -->
     <div class="service-title title">
       <router-link :to="{name:'MyScores'}">
@@ -39,11 +39,6 @@
   @import "../../../assets/scss/Global.scss";
 
   .transfer-out {
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    position: fixed;
-
     .title {
       margin: 40px 20px 20px 20px;
       font-size: 28px;

@@ -1,17 +1,26 @@
 <template>
   <div class="safety-center">
-    <div class="safety-center-tel">
-      <mt-cell title="手机号" to="tel" :value="this.infor.mobile" is-link></mt-cell>
-    </div>
-    <div class="safety-center-pwd">
-      <router-link :to="{name:'SafetyVerification',params:{id:'safetycenter'}}">
-        <mt-cell title="修改支付密码" is-link class="modify-pwd"></mt-cell>
+    <!-- 标题 -->
+    <div class="service-title title">
+      <router-link :to="{name:'Mine'}">
+        <span> <img src="../../../assets/images/l.svg" alt=""> 安全中心</span>
       </router-link>
-      <mt-cell title="忘记支付密码" to="forget" is-link class="modify-pay-pwd"></mt-cell>
     </div>
+    <router-link :to="{name:'ModifyTel'}">
+      <div class="safety-center-tel">
+        <mt-cell title="手机号" is-link value="1885564"></mt-cell>
+      </div>
+    </router-link>
+    <div class="set-pwd">
+      <mt-cell title="设置支付密码" to="forget" is-link class="modify-pay-pwd"></mt-cell>
+    </div>
+    <router-link :to="{name:'SafetyVerification',params:{id:'safetycenter'}}">
+      <mt-cell title="修改支付密码" is-link class="modify-pwd"></mt-cell>
+    </router-link>
+    <mt-cell title="忘记支付密码" to="forget" is-link class="modify-pay-pwd"></mt-cell>
     <router-link to="mine">
-      <div class="order-button">
-        <mt-button size="large">返回</mt-button>
+      <div class="back-btn">
+        <van-button type="info" size="large">返回</van-button>
       </div>
     </router-link>
   </div>
@@ -22,57 +31,26 @@
   export default {
     data() {
       return {
-        infor: {
-          mobile: ''
-        }
+
       }
     },
     created() {
-      this.information()
     },
     methods: {
-      // 个人信息
-      information() {
-        api.information().then(res => {
-          this.infor = res.data
-        }).catch(err => {
-          console.log(err)
-        })
-      }
+
     }
   }
 </script>
 <style lang="scss">
   @import "../../../assets/scss/Global.scss";
+
   .safety-center {
-    color: #333;
-    font-size: 28px;
-
     .safety-center-tel {
-      margin: 10px 24px;
-
-      .mint-cell {
-        border-radius: 10px;
-      }
-
-      .mint-cell-value {
-        span {
-          color: #999;
-        }
-      }
+      margin: 20px 0;
     }
 
-    .safety-center-pwd {
-      margin: 10px 24px;
-      a.mint-cell.modify-pwd {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-      }
-
-      a.mint-cell.modify-pay-pwd {
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-      }
+    .set-pwd {
+      border-bottom: 1px solid #f2f2f2;
     }
   }
 </style>

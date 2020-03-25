@@ -1,5 +1,5 @@
 <template>
-  <div class="turn-result">
+  <div class="turn-result  backcolor">
     <div class="service-title title">
       <router-link :to="{name:'TurnConfirm'}">
         <span> <img src="../../../assets/images/l.svg" alt=""> 转出结果</span>
@@ -23,11 +23,6 @@
   @import "../../../assets/scss/Global.scss";
 
   .turn-result {
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    position: fixed;
-
     .turn-img {
       margin: 50px auto;
       text-align: center;
@@ -35,9 +30,11 @@
       img {
         width: 130px;
       }
+
       .num {
-          font-size: 48px;
-        }
+        font-size: 48px;
+      }
+
       p {
         margin: 20px 0;
         font-size: 30px;

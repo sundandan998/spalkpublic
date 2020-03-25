@@ -84,41 +84,23 @@ export default new Router({
       name: 'InvitationRecord',
       component: () => import('@/pages/mine/invite-people/InvitationRecord')
     },
-    //  资产中心
+    // 个人中心
     {
-      path: '/assets',
-      name: 'Assets',
-      component: () => import('@/pages/mine/assets-center/AssetsCenter')
+      path: '/personcenter',
+      name: 'PersonCenter',
+      component: () => import('@/pages/mine/person-center/PersonCenter')
     },
-    // 资产详情
+    // 修改个人信息
     {
-      path: '/assetdetail/:code',
-      name: 'AssetDetail',
-      component: () => import('@/pages/mine/assets-center/AssetDetail')
+      path: '/edit',
+      name: 'EditInformation',
+      component: () => import('@/pages/mine/person-center/EditInformation')
     },
-    // 冻结转让
+    // 专属管家
     {
-      path: '/freezetransfer/:order_id',
-      name: 'FreezeTransfer',
-      component: () => import('@/pages/mine/assets-center/FreezeTransfer')
-    },
-    // 可用转让
-    {
-      path: '/availabletransfer',
-      name: 'AvailableTransfer',
-      component: () => import('@/pages/mine/assets-center/AvailableTransfer')
-    },
-    // 确认转让
-    {
-      path: '/confirm',
-      name: 'ConfirmTransfer',
-      component: () => import('@/pages/mine/assets-center/ConfirmTransfer')
-    },
-    // 转让--订单详情
-    {
-      path: '/transferdetail/:code',
-      name: 'TransferDetail',
-      component: () => import('@/pages/mine/assets-center/TransferDetail')
+      path: '/housekeeper',
+      name: 'Housekeeper',
+      component: () => import('@/pages/mine/housekeeper/Housekeeper')
     },
     //订单详情-待受理
     {

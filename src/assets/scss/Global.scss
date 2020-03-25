@@ -154,7 +154,13 @@ a {
     }
   }
 }
-
+// 设置背景为白色
+.backcolor{
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  position: fixed;
+}
 //支付密码样式
 
 .mint-popup-bottom {
@@ -189,8 +195,9 @@ a {
 // }
 
 input{
-  border:none;
-  width: 50%;
+  border: none;
+  width: 26%;
+  float: right;
 }
 .mint-cell-wrapper {
   background-image: none !important;
