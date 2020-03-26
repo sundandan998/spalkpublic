@@ -1,18 +1,29 @@
 <template>
   <div class="safety-verification">
+    <!-- 标题 -->
+    <div class="service-title title">
+      <router-link :to="{name:'SafetyCenter'}">
+        <span> <img src="../../../assets/images/l.svg" alt=""> 安全验证</span>
+      </router-link>
+    </div>
     <div class="safety-verification-tel">
-      <mt-cell title="手机号" :value="infor.mobile"></mt-cell>
+      <mt-cell title="手机号" value="166515"></mt-cell>
     </div>
     <div class="safety-verification-code">
       <mt-field placeholder="请输入验证码" type="number" v-model="verification.code">
         <input class="send-input" v-on:click="sendSmsCode" readonly="readonly" v-model="btnCode.btnContent" />
       </mt-field>
     </div>
-    <div class="">
-      <van-button square size="large" type="danger" @click="safetyVerification" :disabled="disabled">提交</van-button>
-      <router-link to="safety">
-        <van-button square size="large" type="warning" @click.native="cancel">取消</van-button>
+    <!-- 底部按钮 -->
+    <div class="bottom-btn">
+      <router-link :to="{name:'SafetyCenter'}">
+        <div class="left-btn fl">
+          <van-button plain type="primary">返回</van-button>
+        </div>
       </router-link>
+      <div class="right-btn fr" @click="submit">
+        <van-button type="info"> 提交</van-button>
+      </div>
     </div>
   </div>
 </template>
@@ -51,48 +62,19 @@
           console.log(err)
         })
       },
-      // 安全验证
-      safetyVerification() {
-        this.verification.mobile = this.infor.mobile
-        api.verification(this.verification).then(res => {
-          if (res.code == 0) {
-            Toast({
-              message: res.msg,
-              position: 'top',
-              className: 'zZindex'
-            })
-            if (this.$route.params.id == 'mine') {
-              this.$router.push({
-                name: 'SetPwd',
-                params: { id: 'mine' }
-              })
-            } else if (this.$route.params.id == 'result') {
-              this.$router.push({
-                name: 'SetPwd',
-                params: { id: 'result' }
-              })
-            } else if (this.$route.params.id == 'reservation') {
-              this.$router.push({
-                name: 'SetPwd',
-                params: { id: 'reservation' }
-              })
-            } else if (this.$route.params.id == 'safetycenter') {
-              this.$router.push({
-                name: 'ModifyPwd',
-              })
-            }
-          }
-        }).catch(err => {
-          if (err.code != 0) {
-            Toast({
-              message: err.msg,
-              position: 'top',
-              className: 'zZindex'
-            })
-          }
-        })
-
+      // 提交
+      submit(){
+        if(this.$route.params.click=='set'){
+          this.$router.push({
+            name:'SetPwd'
+          })
+        }else if(this.$route.params.click=='modify'){
+          this.$router.push({
+            name:'ModifyPwd'
+          })
+        }
       },
+
       // 发送验证码
       sendSmsCode() {
         // debugger
@@ -130,39 +112,7 @@
           clearTimeout(timer)
         }
       },
-      // 取消按钮
-      cancel() {
-        if (this.$route.params.id == 'mine') {
-          this.$router.push({
-            name: 'Mine'
-          })
-        } else {
-          if (this.$route.params.id == 'result') {
-            this.$router.push({
-              name: 'Index'
-            })
-          }
-          else {
-            if (this.$route.params.id == 'reservation') {
-              this.$router.push({
-                name: 'Index',
-              })
-            } else {
-              if (this.$route.params.id == 'safetycenter') {
-                this.$router.push({
-                  name: 'SafetyCenter',
-                })
-              } else {
-                if (this.$route.params.id == 'out') {
-                  this.$router.push({
-                    name: 'TransferOut',
-                  })
-                }
-              }
-            }
-          }
-        }
-      }
+
     },
     watch: {
       verification: {
@@ -186,9 +136,9 @@
 
     .safety-verification-code {
       .send-input {
-        border: 0.01333rem solid #a9a9a9;
+        border: 1px solid #4DABF0;
         float: right;
-        color: #a9a9a9;
+        color: #4DABF0;
         padding: 2px 0;
         text-align: center;
         border-radius: 7px;
@@ -206,8 +156,5 @@
       margin: 10px 0;
     }
 
-    .mint-cell {
-      border-radius: 10px;
-    }
   }
 </style>

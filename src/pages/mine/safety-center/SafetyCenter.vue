@@ -12,9 +12,11 @@
       </div>
     </router-link>
     <div class="set-pwd">
-      <mt-cell title="设置支付密码" to="forget" is-link class="modify-pay-pwd"></mt-cell>
+    <router-link :to="{name:'SafetyVerification',params:{click:'set'}}">
+      <mt-cell title="设置支付密码"  is-link class="modify-pay-pwd"></mt-cell>
+    </router-link>
     </div>
-    <router-link :to="{name:'SafetyVerification',params:{id:'safetycenter'}}">
+    <router-link :to="{name:'SafetyVerification',params:{click:'modify'}}">
       <mt-cell title="修改支付密码" is-link class="modify-pwd"></mt-cell>
     </router-link>
     <mt-cell title="忘记支付密码" to="forget" is-link class="modify-pay-pwd"></mt-cell>

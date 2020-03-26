@@ -1,5 +1,11 @@
 <template>
-  <div class="modify-pwd">
+  <div class="modify-pwd backcolor">
+    <!-- 标题 -->
+    <div class="service-title title">
+      <router-link :to="{name:'SafetyVerification'}">
+        <span> <img src="../../../assets/images/l.svg" alt=""> 修改支付密码</span>
+      </router-link>
+    </div>
     <!-- 支付密码框 -->
     <div class="modify-pwd-input">
       <span>原支付密码</span>
@@ -11,10 +17,17 @@
     </div>
     <!-- 数字键盘 -->
     <van-number-keyboard :show="showKeyboard" @input="onInput" @delete="onDelete" @blur="showKeyboard = false" />
-    <div class="bottom-button">
-      <van-button size="large" type="danger" :disabled="disabled" @click.native=edit>提交</van-button>
-      <router-link to="safety">
-        <van-button size="large" type="warning">取消</van-button>
+    <!-- 底部按钮 -->
+    <div class="bottom-btn">
+      <router-link :to="{name:'SafetyVerification'}">
+        <div class="left-btn fl">
+          <van-button plain type="primary">取消</van-button>
+        </div>
+      </router-link>
+      <router-link :to="{name:'SafetyCenter'}">
+        <div class="right-btn fr">
+          <van-button type="info"> 确认</van-button>
+        </div>
       </router-link>
     </div>
   </div>
@@ -122,10 +135,11 @@
 
   .modify-pwd {
     .modify-pwd-input {
-      margin: 138px auto;
-      span{
-        font-size:30px;
-        color:#333;
+      /* margin: 138px auto; */
+
+      span {
+        font-size: 30px;
+        color: #333;
         display: block;
         margin: 20px 30px;
       }

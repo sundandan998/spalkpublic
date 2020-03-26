@@ -1,5 +1,11 @@
 <template>
-  <div class="set-pwd">
+  <div class="set-pwd backcolor">
+    <!-- 标题 -->
+    <div class="service-title title">
+      <router-link :to="{name:'SafetyVerification'}">
+        <span> <img src="../../../assets/images/l.svg" alt=""> 设置支付密码</span>
+      </router-link>
+    </div>
     <!-- 支付密码框 -->
     <div class="set-pwd-input">
       <span>设置6位支付密码</span>
@@ -9,9 +15,18 @@
     </div>
     <!-- 数字键盘 -->
     <van-number-keyboard :show="showKeyboard" @input="onInput" @delete="onDelete" @blur="showKeyboard = false" />
-    <div class="set-pay-pwd">
-      <van-button size="large" class="submit-btn" type="danger" :disabled="disabled" @click="submit">提交</van-button>
-      <van-button size="large" class="submit-btn-cancel" type="warning" @click.native="setPwd">取消</van-button>
+    <!-- 底部按钮 -->
+    <div class="bottom-btn">
+      <router-link :to="{name:'SafetyVerification'}">
+        <div class="left-btn fl">
+          <van-button plain type="primary" >取消</van-button>
+        </div>
+      </router-link>
+      <router-link :to="{name:'SafetyCenter'}">
+        <div class="right-btn fr">
+          <van-button type="info"> 确认</van-button>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -60,73 +75,8 @@
       },
       // 提交
       submit() {
-        api.payPwd(this.password).then(res => {
-          if (res.code == 0) {
-            Toast({
-              message: res.msg,
-              position: 'top',
-              className: 'zZindex'
-            })
-            if (this.$route.params.id == 'mine') {
-              this.$router.push({
-                name: 'Mine'
-              })
-            } else {
-              if (this.$route.params.id == 'result') {
-                this.$router.push({
-                  name: 'Index'
-                })
-              } else {
-                if (this.$route.params.id == 'reservation') {
-                  this.$router.push({
-                    name: 'Index'
-                  })
-                } else {
-                  if (this.$route.params.id == 'out') {
-                    this.$router.push({
-                      name: 'TransferOut'
-                    })
-                  }
-                }
-              }
-            }
-          }
-        }).catch(err => {
-          if (err.code != 0) {
-            Toast({
-              message: err.msg,
-              position: 'top',
-              className: 'zZindex'
-            })
-          }
-        })
+     
       },
-      // 取消
-      setPwd() {
-        if (this.$route.params.id == 'mine') {
-          this.$router.push({
-            name: 'Mine'
-          })
-        } else {
-          if (this.$route.params.id == 'result') {
-            this.$router.push({
-              name: 'Index'
-            })
-          } else {
-            if (this.$route.params.id == 'reservation') {
-              this.$router.push({
-                name: 'Index'
-              })
-            } else {
-              if (this.$route.params.id == 'out') {
-                this.$router.push({
-                  name: 'TransferOut'
-                })
-              }
-            }
-          }
-        }
-      }
     },
     watch: {
       password: {
@@ -148,12 +98,13 @@
 
   .set-pwd {
     .set-pwd-input {
-      margin: 138px auto;
+
+      /* margin: 138px auto; */
       span {
         margin: 20px 30px;
         display: block;
         font-size: 30px;
-        color:#333;
+        color: #333;
       }
     }
   }

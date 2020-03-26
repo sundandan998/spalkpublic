@@ -1,41 +1,30 @@
 <template>
-  <div class="invite-people">
+  <div class="invite-people backcolor">
+    <!-- 标题 -->
+    <div class="service-title title">
+      <router-link :to="{name:'Mine'}">
+        <span> <img src="../../../assets/images/l.svg" alt=""> 邀请管理</span>
+      </router-link>
+    </div>
     <div class="invitation-code">
-      <img src="../../../assets/images/logo-red.png" alt="">
       <span class="text">您的邀请码</span>
-      <p class="code">{{invite_code}}</p>
-      <van-button class="inviteCode" size="small" :data-clipboard-text="invite_code" @click="copy">复 制
-      </van-button>
+      <p class="code">{{1561656}}</p>
     </div>
-    <!-- 邀请记录列表 -->
-    <div class="invitation-list-title">
-      <mt-cell title="邀请历史"></mt-cell>
-    </div>
-    <div class="invitation-list">
-      <div v-for="(item,index) in recentlyList" class="invitation-list-tel">
-        <mt-cell v-if="item.count==0" :title="item.invitee" value="" :label="'注册于:'+item.create_time" class="count">
-        </mt-cell>
-        <router-link :to="{name:'InvitationRecord',params:{query:item.invitee}}">
-          <mt-cell v-if="item.count!=0" :title="item.invitee" :value="item.count" is-link
-            :label="'注册于:'+item.create_time"></mt-cell>
-        </router-link>
+    <!-- 底部按钮 -->
+    <div class="bottom-btn">
+      <router-link :to="{name:'Mine'}">
+        <div class="left-btn fl">
+          <van-button plain type="primary">返回</van-button>
+        </div>
+      </router-link>
+      <div @click="copyText" class=" right-btn fr copy overflow-text tag-read" :data-clipboard-text="18665156">
+        <van-button type="info"> 复制邀请码</van-button>
       </div>
-    </div>
-    <div class="all">
-      <router-link to="record">
-        <span class="all">全部 >></span>
-      </router-link>
-    </div>
-    <div class="order-button">
-      <router-link to="mine">
-        <mt-button size="large">返回</mt-button>
-      </router-link>
     </div>
   </div>
 </template>
 <script>
-  import api from '@/api/user/User.js'
-  import Clipboard from 'clipboard'
+  import { copy } from '@/assets/js/common.js'
   import { Toast } from 'mint-ui'
   export default {
     data() {
@@ -46,8 +35,7 @@
     },
     created() {
       document.title = '邀请新人'
-      this.code()
-      this.list()
+      // this.code()
     },
     methods: {
       // 获取验证码
@@ -58,34 +46,10 @@
 
         })
       },
-      // 获取列表
-      list() {
-        api.recentlyList().then(res => {
-          if (res.code == 0) {
-            this.recentlyList = res.data
-          }
-        }).catch(err => {
-
-        })
-      },
       // 复制
-      copy() {
-        var clipboard = new Clipboard('.inviteCode')
-        clipboard.on('success', e => {
-          Toast({
-            message: '复制成功',
-            className: 'zZindex'
-          })
-          // 释放内存
-          clipboard.destroy()
-        })
-        clipboard.on('error', e => {
-          // 不支持复制
-          console.log('该浏览器不支持自动复制')
-          // 释放内存
-          clipboard.destroy()
-        })
-      },
+      copyText() {
+        copy()
+      }
     }
   }
 </script>
@@ -94,21 +58,13 @@
 
   .invite-people {
     .invitation-code {
-      height: 400px;
-      margin: 10px 24px;
       background-color: #fff;
-      border-radius: 20px;
       text-align: center;
       color: #333;
-
-      img {
-        width: 90px;
-        margin: 40px 0 10px 0;
-      }
-
+      margin-top: 50px;
       .text {
         display: block;
-        font-size: 24px;
+        font-size: 28px;
       }
 
       .code {
@@ -143,9 +99,10 @@
 
     .invitation-list {
       margin: 10px 24px;
-      .mint-cell-value{
-        span{
-          color:#ce0101;
+
+      .mint-cell-value {
+        span {
+          color: #ce0101;
         }
       }
     }
@@ -159,8 +116,9 @@
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
     }
+
     /* 全部 */
-    .all{
+    .all {
       text-align: center;
       font-size: 24px;
     }

@@ -164,12 +164,7 @@ export default new Router({
       name: 'AddressDetail',
       component: () => import('@/pages/mine/shipping-address/AddressDetail')
     },
-    // 安全中心
-    {
-      path: '/safety',
-      name: 'SafetyCenter',
-      component: () => import('@/pages/mine/safety-center/SafetyCenter')
-    },
+
     // 证书详情
     {
       path: '/certificate',
@@ -229,6 +224,12 @@ export default new Router({
       path: '/agentdetail/:id',
       name: 'AgentDetail',
       component: () => import('@/pages/mine/agent/AgentDetail')
+    },
+    // 安全中心
+    {
+      path: '/safety',
+      name: 'SafetyCenter',
+      component: () => import('@/pages/mine/safety-center/SafetyCenter')
     },
     // 修改手机号
     {

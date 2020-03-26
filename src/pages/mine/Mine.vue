@@ -38,7 +38,7 @@
       <mt-cell title="我的证书" to="certificate" is-link>
         <img slot="icon" src="../../assets/images/access.svg">
       </mt-cell>
-      <mt-cell title="邀请管理" to="address" is-link>
+      <mt-cell title="邀请管理" to="invite" is-link>
         <img slot="icon" src="../../assets/images/address.svg">
       </mt-cell>
       <mt-cell title="专属管家" to="housekeeper" is-link>
@@ -76,7 +76,10 @@
 </script>
 <style lang="scss">
   @import '../../assets/scss/Global.scss';
-
+  .mint-cell-text{
+    font-size: 14px;
+    margin-left: 5px;
+  }
   .home {
     .home-title {
       height: 150px;
