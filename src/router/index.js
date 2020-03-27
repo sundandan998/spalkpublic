@@ -72,12 +72,7 @@ export default new Router({
       name: 'Mine',
       component: () => import('@/pages/mine/Mine')
     },
-    // 邀请新人
-    {
-      path: '/invite',
-      name: 'InvitePeople',
-      component: () => import('@/pages/mine/invite-people/InvitePeople')
-    },
+
     // 邀请记录
     {
       path: '/record',
@@ -219,11 +214,23 @@ export default new Router({
       name: 'Agent',
       component: () => import('@/pages/mine/agent/Agent')
     },
-    // 代理商详情
+    // 代理商用户
     {
-      path: '/agentdetail/:id',
-      name: 'AgentDetail',
-      component: () => import('@/pages/mine/agent/AgentDetail')
+      path: '/agentuser',
+      name: 'AgentUser',
+      component: () => import('@/pages/mine/agent/AgentUser')
+    },
+    // 用户详情
+    {
+      path: '/userdetail',
+      name: 'UserDetail',
+      component: () => import('@/pages/mine/agent/UserDetail')
+    },
+    // 邀请管理
+    {
+      path: '/invite',
+      name: 'InvitePeople',
+      component: () => import('@/pages/mine/agent/InvitePeople')
     },
     // 安全中心
     {
@@ -260,6 +267,48 @@ export default new Router({
       path: '/forget',
       name: 'Forget',
       component: () => import('@/pages/mine/safety-center/forgetPwd')
+    },
+    // // 健康管家--用户订单
+    {
+      path: '/healthorder',
+      name: 'HealthOrder',
+      component: () => import('@/pages/mine/health-steward/health-order/HealthOrder')
+    },
+    // // 健康管家--用户订单详情
+    {
+      path: '/healthorderdetail',
+      name: 'HealthOrderDetail',
+      component: () => import('@/pages/mine/health-steward/health-order/HealthOrderDetail')
+    },
+    // // 健康管家--取消订单
+    {
+      path: '/cancelorder',
+      name: 'CancelOrder',
+      component: () => import('@/pages/mine/health-steward/health-order/CancelOrder')
+    },
+    //健康管家--安排
+    {
+      path: '/arrangement',
+      name: 'Arrangement',
+      component: () => import('@/pages/mine/health-steward/health-order/Arrangement')
+    },
+    // 证书管理
+    {
+      path: '/certificatemanagement',
+      name: 'CertificateManagement',
+      component: () => import('@/pages/mine/health-steward/certificate-management/CertificateManagement')
+    },
+    // 上传证书
+    {
+      path: '/uploadinformation',
+      name: 'UploadInformation',
+      component: () => import('@/pages/mine/health-steward/certificate-management/UploadInformation')
+    },
+    // 填写证书信息
+    {
+      path: '/fillformation',
+      name: 'FillInformation',
+      component: () => import('@/pages/mine/health-steward/certificate-management/FillInformation')
     },
   ]
 })

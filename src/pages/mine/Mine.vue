@@ -29,13 +29,16 @@
       <mt-cell title="我的订单" to="myorder" is-link>
         <img slot="icon" src="../../assets/images/order.svg">
       </mt-cell>
-      <mt-cell title="用户订单" to="myorder" is-link>
+      <mt-cell title="用户订单" to="healthorder" is-link value="全部">
         <img slot="icon" src="../../assets/images/order.svg">
       </mt-cell>
-      <mt-cell title="代理商管理" to="assets" is-link>
+      <mt-cell title="代理商管理" to="agent" is-link>
         <img slot="icon" src="../../assets/images/agent.svg">
       </mt-cell>
       <mt-cell title="我的证书" to="certificate" is-link>
+        <img slot="icon" src="../../assets/images/access.svg">
+      </mt-cell>
+      <mt-cell title="证书管理" to="certificatemanagement" is-link>
         <img slot="icon" src="../../assets/images/access.svg">
       </mt-cell>
       <mt-cell title="邀请管理" to="invite" is-link>
@@ -76,10 +79,12 @@
 </script>
 <style lang="scss">
   @import '../../assets/scss/Global.scss';
-  .mint-cell-text{
+
+  .mint-cell-text {
     font-size: 14px;
     margin-left: 5px;
   }
+
   .home {
     .home-title {
       height: 150px;

@@ -1,7 +1,7 @@
 // vant框架
 import {PasswordInput, NumberKeyboard, Popup, List, PullRefresh, Dialog, 
   GoodsAction, Tab, Tabs, AddressList,Button,Card,Stepper,RadioGroup, 
-  Radio,AddressEdit,NoticeBar,Swipe, SwipeItem, Row, Col,Area, Uploader} from 'vant'
+  Radio,AddressEdit,NoticeBar,Swipe, SwipeItem, Row, Col,Area, Uploader,Search,Field,DatetimePicker } from 'vant'
 import { Slider,Steps,Step,DropdownMenu, DropdownItem,Dropdown} from 'element-ui'
 const external = {
   install: function (Vue) {
@@ -30,6 +30,9 @@ const external = {
     Vue.use(DropdownMenu)
     Vue.use(DropdownItem)
     Vue.use(Dropdown)
+    Vue.use(Search)
+    Vue.use(Field)
+    Vue.use(DatetimePicker)
   }
 }
 export default external

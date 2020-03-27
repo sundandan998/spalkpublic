@@ -72,35 +72,5 @@
         color: #036EB8;
       }
     }
-
-    .scores-btn {
-      width: 100%;
-      position: fixed;
-      bottom: 0;
-
-      .into-btn {
-        width: 45%;
-        border: 1px solid #036EB8;
-        background-color: #fff;
-        margin-left: 20px;
-        border-radius: 15px;
-        text-align: center;
-
-        .van-button--default {
-          color: #036EB8;
-          border: none;
-          height: 42px;
-        }
-      }
-
-      .out-btn {
-        width: 45%;
-        margin-right: 20px;
-
-        .van-button--info {
-          border-radius: 10px;
-        }
-      }
-    }
   }
 </style>

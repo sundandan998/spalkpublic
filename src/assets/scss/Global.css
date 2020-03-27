@@ -227,6 +227,36 @@ input {
   z-index: 3000 !important;
 }
 
+.scores-btn {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+.scores-btn .into-btn {
+  width: 45%;
+  border: 1px solid #036EB8;
+  background-color: #fff;
+  margin-left: 20px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.scores-btn .into-btn .van-button--default {
+  color: #036EB8;
+  border: none;
+  height: 42px;
+}
+
+.scores-btn .out-btn {
+  width: 45%;
+  margin-right: 20px;
+}
+
+.scores-btn .out-btn .van-button--info {
+  border-radius: 10px;
+}
+
 .mint-popup {
   width: 80%;
   border-radius: 5px;
