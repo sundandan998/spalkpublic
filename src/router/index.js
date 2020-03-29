@@ -310,5 +310,17 @@ export default new Router({
       name: 'FillInformation',
       component: () => import('@/pages/mine/health-steward/certificate-management/FillInformation')
     },
+    // 服务机构--用户订单
+    {
+      path: '/serviceorder',
+      name: 'ServiceOrder',
+      component: () => import('@/pages/mine/health-steward/service-agency/ServerOrder')
+    },
+    // 服务机构--用户订单详情
+    {
+      path: '/servicedetail',
+      name: 'ServiceDetail',
+      component: () => import('@/pages/mine/health-steward/service-agency/ServiceDetail')
+    },
   ]
 })

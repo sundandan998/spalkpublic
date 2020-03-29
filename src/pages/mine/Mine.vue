@@ -32,6 +32,9 @@
       <mt-cell title="用户订单" to="healthorder" is-link value="全部">
         <img slot="icon" src="../../assets/images/order.svg">
       </mt-cell>
+      <mt-cell title="用户订单/服务机构" to="serviceorder" is-link value="全部">
+        <img slot="icon" src="../../assets/images/order.svg">
+      </mt-cell>
       <mt-cell title="代理商管理" to="agent" is-link>
         <img slot="icon" src="../../assets/images/agent.svg">
       </mt-cell>
