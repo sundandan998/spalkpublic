@@ -4,7 +4,7 @@
     <router-link :to="{name:'PersonCenter'}">
       <div class="home-title">
         <div class="home-title-icon fl"><img src="../../assets/images/avatar.svg" alt=""
-            class="fl"><span>1589895658</span></div>
+            class="fl"><span>{{this.tel}}</span></div>
         <img src="../../assets/images/r.svg" alt="" class="fr arrow">
       </div>
     </router-link>
@@ -32,15 +32,15 @@
       <mt-cell title="用户订单" to="healthorder" is-link value="全部">
         <img slot="icon" src="../../assets/images/order.svg">
       </mt-cell>
-      <mt-cell title="用户订单/服务机构" to="serviceorder" is-link value="全部">
+      <!-- <mt-cell title="用户订单/服务机构" to="serviceorder" is-link value="全部">
         <img slot="icon" src="../../assets/images/order.svg">
-      </mt-cell>
+      </mt-cell> -->
       <mt-cell title="代理商管理" to="agent" is-link>
         <img slot="icon" src="../../assets/images/agent.svg">
       </mt-cell>
-      <mt-cell title="我的证书" to="certificate" is-link>
+      <!-- <mt-cell title="我的证书" to="certificate" is-link>
         <img slot="icon" src="../../assets/images/access.svg">
-      </mt-cell>
+      </mt-cell> -->
       <mt-cell title="证书管理" to="certificatemanagement" is-link>
         <img slot="icon" src="../../assets/images/access.svg">
       </mt-cell>
@@ -67,6 +67,7 @@
       return {
         selected: 'mine',
         message: 'mine',
+        tel:''
       }
     },
     components: {
@@ -74,9 +75,13 @@
     },
     created() {
       document.title = '斯帕尔克'
+      this.userInfo()
     },
     methods: {
-
+      userInfo(){
+        let info = JSON.parse(localStorage.getItem("userInfo"))
+        this.tel = info.data.mobile
+      }
     }
   }
 </script>

@@ -30,6 +30,7 @@ export function copy() {
     clipboard.destroy()
   })
 }
+
 // 获取当前时间
 export default {
   sendCode,

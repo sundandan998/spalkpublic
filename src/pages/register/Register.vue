@@ -1,5 +1,5 @@
 <template>
-  <div class="register">
+  <div class="register backcolor">
     <div class="register-title">
       <span>登录/注册</span>
       <p>未注册则将为您自动创建新账号</p>
@@ -41,7 +41,7 @@
         // 注册参数
         registerParams: {
           mobile: '',
-          access_token: '',
+          access_token: '081gf6QE1q4QC40op0TE1T77QE1gf6Qk',
           code: '',
         },
         // 发送验证码
@@ -52,25 +52,17 @@
       }
     },
     created() {
-      document.title = '千企联盟'
-    },
-    beforeRouteEnter(to, from, next) {
-      window.document.body.style.backgroundColor = "#fff"
-      next()
-    },
-    beforeRouteLeave(to, from, next) {
-      window.document.body.style.backgroundColor = ""
-      next()
+      document.title = '斯帕尔克'
     },
     methods: {
       // 注册
       register() {
-        this.registerParams.access_token = sessionStorage.getItem('access_token')
-        // 判断是否是新用户，如果是新用户，跳转到邀请码页面，如果不是新用户，跳转到首页
+        // 判断用户是否注册过，如果已经注册进入首页，如果没有注册跳转code码页
         if (this.is_use == true) {
+          // this.registerParams.access_token = sessionStorage.getItem('access_token')
           this.$store.dispatch('loginByCode', this.registerParams).then(res => {
+            // 判断是否是新用户，如果是新用户，跳转到邀请码页面，如果不是新用户，跳转到首页
             if (this.$store.getters.token !== '') {
-              // window.sessionStorage.setItem('info', info)
               this.$store.commit('detail', res.data)
               this.$router.push({
                 name: 'Index'
@@ -83,16 +75,15 @@
               className: 'zZindex'
             })
           })
-        } else {
-          if (this.is_use == false) {
-            this.$router.push({
-              name: 'Code',
-              params: { registerParams: this.registerParams }
-            })
-          }
+        } else if (this.is_use == false) {
+          this.$router.push({
+            name:'Code',
+            // params:{}
+          })
         }
+
       },
-      // 手机号校验
+      // 检测此用户是否注册过
       sendCode() {
         api.username({ mobile: this.registerParams.mobile }).then(res => {
           if (res.code == 0) {
@@ -105,13 +96,6 @@
             className: 'zZindex'
           })
         })
-        // var tel = /^1[3-9]\d{9}$/
-        // if (!tel.test(this.registerParams.mobile)) {
-        //   this.CodeStatus = 'error'
-        //   this.errTitle = '请输入有效的手机号码'
-        // } else {
-        //   this.CodeStatus = 'success'
-        // }
       },
       // 发送验证码
       sendSmsCode() {
@@ -164,9 +148,11 @@
 </script>
 <style lang="scss">
   @import "../../assets/scss/Global.scss";
+
   .register {
     .register-title {
       margin: 118px 0px 10px 54px;
+
       span {
         font-size: 60px;
         color: #333;
@@ -183,17 +169,18 @@
   .send-input {
     border: none;
     float: right;
-    width: 120px;
-    height: 60px;
-    background-color: #999;
+    width: 110px;
+    height: 50px;
+    border: 1px solid #4DABF0;
     border-radius: 10px;
-    color: #fff;
+    color: #4DABF0;
     text-align: center;
     font-size: 26px;
   }
 
   .register-tel {
     margin: 0 54px 124px 54px;
+
     .fl {
       position: relative;
       top: 40px;
@@ -222,6 +209,7 @@
 
   .register-button {
     margin: 32px 54px 10px 54px;
+
     p {
       font-size: 20px;
       color: #333;

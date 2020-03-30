@@ -153,6 +153,14 @@ export default {
       params: params
     })
   },
+  // 修改个人信息
+  modifyInfo(params = {}) {
+    return request({
+      url: '/user/info/modify/',
+      method: 'post',
+      data: params
+    })
+  },
   // 积分兑换通证
   exchange(params = {}) {
     return request({
@@ -222,9 +230,25 @@ export default {
   // 检测用户名是否唯一
   username(params = {}) {
     return request({
-      url: '/user/username/check/',
+      url: '/user/username/'+params.mobile+'/check/',
       method: 'get',
       params: params
+    })
+  },
+  // 检测邀请码是否有效
+  inviteCode(params = {}){
+    return request({
+      url: '/user/invite_code/'+params.invite_code+'/check/',
+      method: 'get',
+      params: params
+    })
+  },
+  // 用户提交邀请码
+  subCode(params = {}){
+    return request({
+      url: '/user/invite_code/add/',
+      method: 'post',
+      data: params
     })
   },
   // 根据分类获取商品列表信息

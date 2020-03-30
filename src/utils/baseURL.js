@@ -2,15 +2,15 @@ import Vue from 'vue'
 let baseUrl = ''
 switch (process.env.NODE_ENV) {
   case 'development':
-    baseUrl = 'http://111.230.221.200:10001'
+    baseUrl = 'http://111.230.221.200:11000'
     // baseUrl = 'https://www.sparkcell.cn/webadmin'
     break
   case 'test':
-    baseUrl = 'http://111.230.221.200:10001'
+    baseUrl = 'http://111.230.221.200:11000'
     // baseUrl = 'https://www.sparkcell.cn/webadmin'
     break
   case 'production':
-    baseUrl = 'http://111.230.221.200:10001'
+    baseUrl = 'http://111.230.221.200:11000'
     // baseUrl = 'https://www.sparkcell.cn/webadmin'
     break
 }
