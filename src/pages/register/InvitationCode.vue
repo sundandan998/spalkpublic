@@ -34,8 +34,10 @@
     },
     methods: {
       submitCode() {
+        // 校验验证码是否有效
         api.inviteCode(this.code).then(res => {
           if (res.can_use == true) {
+            // 用户提交验证码
             api.subCode(this.code).then(res => {
               if (res.code == 0) {
                 this.$router.push({

@@ -68,6 +68,7 @@ a {
 .service-cell .index-list-card .index-list-text {
   margin: 20px 0 20px 0;
   color: #a1a1a1;
+  font-size: 20px;
 }
 
 .service-cell .index-list-card .index-list-text .price {
@@ -76,9 +77,23 @@ a {
   color: #F05246;
 }
 
+.service-cell .index-list-card .index-list-text .look-detail {
+  margin-top: 20px;
+}
+
+.service-cell .index-list-card .right-arrow {
+  width: 20px;
+  color: #A1A1A1;
+  margin-top: -30px;
+}
+
 .service-cell .index-list-card .van-card__title {
-  font-size: 16px;
+  font-size: 14px;
   margin-top: 15px;
+}
+
+.label {
+  display: inline-block;
 }
 
 .van-tab.van-tab--active {

@@ -87,7 +87,6 @@
 </script>
 <style lang="scss">
   @import '../../assets/scss/Global.scss';
-
   .mint-cell-text {
     font-size: 14px;
     margin-left: 5px;

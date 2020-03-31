@@ -1,24 +1,22 @@
 <template>
-  <div class="select-service">
+  <div class="select-service backcolor">
     <!-- 标题 -->
     <div class="service-title title">
-      <span class="fl"> <img src="../../assets/images/l.svg" alt=""> 预约服务</span>
+      <span class="fl" @click="back"> <img src="../../assets/images/l.svg" alt=""> 预约服务</span>
       <span class="fr" @click="service"> <img src="../../assets/images/ministry.svg" alt="" class="right-icon"></span>
     </div>
     <!-- 细胞名称 -->
     <div class="service-cell">
       <div class="cell-img fl">
-        <img src="../../assets/images/cell.jpg" alt="">
+        <img :src="category.icon" alt="">
       </div>
-      <van-card class="index-list-card fr" title="免疫细胞">
+      <van-card class="index-list-card fr" :title="category.name">
         <div class="index-list-text" slot="tags">
-          <div class="label">
-            <span>防御 |</span>
-            <span>监控 |</span>
-            <span>清洁</span>
+          <div class="label" v-for="item in category.labels">
+            <span>{{item}} |</span>
           </div>
           <div class="price">
-            <span>3966积分</span>
+            <span>{{this.integral}}</span>
           </div>
         </div>
       </van-card>
@@ -26,12 +24,14 @@
     <!-- 服务规格 -->
     <div class="service-specification">
       <span>服务规格</span>
-      <p>免疫细胞-存储10年</p>
+      <div v-for="(item,index) in services">
+        <p @click="select(item,index)" :class="{active:categoryIndex==index}">{{item.name}}</p>
+      </div>
     </div>
     <!-- 底部按钮 -->
     <div class="bottom-btn">
       <!-- <router-link :to="{name:'Index'}"> -->
-      <div class="left-btn fl" v-on:click="$router.go(-1)">
+      <div class="left-btn fl" @click="back">
         <van-button plain type="primary">返回</van-button>
       </div>
       <!-- </router-link> -->
@@ -45,10 +45,19 @@
 </template>
 <script>
   import { copy } from '@/assets/js/common.js'
+  import api from '@/api/service/Service.js'
   export default {
     data() {
       return {
+        services: '',
+        category: '',
+        // 积分
+        integral:'',
+        categoryIndex: 0,
       }
+    },
+    created() {
+      this.reservation()
     },
     methods: {
       service() {
@@ -72,6 +81,32 @@
             // })
           }
         })
+      },
+      reservation() {
+        api.reservation({ category_id: this.$route.params.id }).then(res => {
+          this.category = res.data.category
+          this.services = res.data.services
+        }).catch(err => {
+
+        })
+      },
+      // 根据路径返回
+      back() {
+        if (this.$route.params.url == 'index') {
+          this.$router.push({
+            name: 'Index'
+          })
+        } else if (this.$route.params.url == 'detail') {
+          this.$router.push({
+            name: 'Detail',
+            params: { id: this.$route.params.id }
+          })
+        }
+      },
+      select(item,index){
+        this.categoryIndex = index
+        this.category.name = item.name
+        this.integral = item.price
       }
     }
   }
@@ -92,13 +127,18 @@
       }
 
       p {
-        margin: 20px;
+        margin: 30px;
         border: 1px solid #036EB8;
         padding: 10px 10px;
         font-size: 26px;
         border-radius: 10px;
-        width: 40%;
+        width: 50%;
         text-align: center;
+        color:#036EB8;
+      }
+      .active{
+        background-color: #036EB8;
+        color:#fff;
       }
     }
 

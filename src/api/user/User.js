@@ -76,7 +76,7 @@ export default {
   // 个人资产列表
   assets(params = {}) {
     return request({
-      url: '/user/asset/list/',
+      url: '/user/asset/detail/',
       method: 'get',
       params: params
     })

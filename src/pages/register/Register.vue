@@ -11,7 +11,9 @@
       </mt-field>
       <img src="../../assets/images/register-code.png" width="15px" height="17px" class="fl">
       <mt-field placeholder="请输入验证码" type="number" v-model="registerParams.code">
-        <input class="send-input" v-on:click="sendSmsCode" readonly="readonly" v-model="btnCode.btnContent" />
+        <!-- <span v-show="show" @click="getCode">获取验证码</span>
+        <span v-show="!show" class="count">{{count}} s</span> -->
+        <input class="send-input" v-on:click="sendSmsCode" readonly="readonly" v-model="btnContent">
       </mt-field>
     </div>
     <div class="register-button">
@@ -31,6 +33,7 @@
   import api from '@/api/user/User.js'
   import { Toast } from 'mint-ui'
   import { mapGetters } from 'vuex'
+  // import { timer } from '@/assets/js/common.js'
   export default {
     data() {
       return {
@@ -41,14 +44,11 @@
         // 注册参数
         registerParams: {
           mobile: '',
-          access_token: '081gf6QE1q4QC40op0TE1T77QE1gf6Qk',
+          access_token: '071n0yy60ZuVCF1qGay60ovyy60n0yyt',
           code: '',
         },
         // 发送验证码
-        btnCode: {
-          btnContent: '发  送',
-          mobile: ''
-        },
+        btnContent: '发  送',
       }
     },
     created() {
@@ -77,7 +77,7 @@
           })
         } else if (this.is_use == false) {
           this.$router.push({
-            name:'Code',
+            name: 'Code',
             // params:{}
           })
         }
@@ -123,10 +123,10 @@
       timer() {
         if (this.time > 0) {
           this.time--
-          this.btnCode.btnContent = this.time + 's'
+          this.btnContent = this.time + 's'
           var timer = setTimeout(this.timer, 1000)
         } else if (this.time === 0) {
-          this.btnCode.btnContent = '发送'
+          this.btnContent = '发送'
           clearTimeout(timer)
         }
       },

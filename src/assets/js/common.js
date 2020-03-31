@@ -1,14 +1,13 @@
 import Clipboard from 'clipboard'
 import { Toast } from 'mint-ui'
-export function sendCode(btnCode, time) {
-  // debugger
-  // let time = 60
+export function timer(btnContent) {
+  let time = 60
   if (time > 0) {
     time--
-    btnCode.btnContent = time + 's'
-    var timer = setTimeout(sendCode, 1000)
+    btnContent = time + 's'
+    let timer = setTimeout(timer, 1000)
   } else if (time === 0) {
-    btnCode.btnContent = '发送'
+    btnContent = '发送'
     clearTimeout(timer)
   }
 }
@@ -33,7 +32,7 @@ export function copy() {
 
 // 获取当前时间
 export default {
-  sendCode,
   copy,
   Toast,
+  timer,
 }
